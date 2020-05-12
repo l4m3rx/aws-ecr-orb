@@ -41,6 +41,12 @@ parameters:
 
 steps:
   - run:
+      name: Git submodules
+      command: |
+        git submodule init
+        git submodule update --remote
+      no_output_timeout: <<parameters.no-output-timeout>>
+  - run:
       name: Build docker image
       command: |
         docker_tag_args=""
